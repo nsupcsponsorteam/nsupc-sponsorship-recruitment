@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSUPC — Sponsorship Officer Recruitment 2026–27</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-deep: #0a2e0a;
+    --green-dark: #0d3d12;
+    --green-mid: #1a5c24;
+    --green-bright: #2d8c3e;
+    --green-light: #4db862;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --gold-pale: #f5e9b8;
+    --cream: #f9f5e7;
+    --ink: #0a1a0a;
+    --bill-green: #85bb65;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--green-deep);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Money texture background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 60px,
+        rgba(45, 140, 62, 0.04) 60px,
+        rgba(45, 140, 62, 0.04) 61px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(45, 140, 62, 0.04) 60px,
+        rgba(45, 140, 62, 0.04) 61px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Scrolling ticker */
+  .ticker-wrap {
+    width: 100%;
+    background: var(--gold);
+    overflow: hidden;
+    padding: 8px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--gold-light);
+  }
+  .ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--green-deep);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0 40px;
+  }
+  .ticker-item::after {
+    content: '  ✦  ';
+    margin: 0 10px;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px 60px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  /* Big decorative $ signs */
+  .hero-bg-symbol {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 320px;
+    color: rgba(45, 140, 62, 0.07);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+  .hero-bg-symbol.left  { left: -60px; top: 10%; }
+  .hero-bg-symbol.right { right: -60px; bottom: 10%; }
+
+  .logo-wrap {
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .logo-wrap img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--gold);
+    box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 20px 60px rgba(0,0,0,0.5);
+    animation: logoGlow 3s ease-in-out infinite alternate;
+  }
+  @keyframes logoGlow {
+    from { box-shadow: 0 0 0 6px rgba(201,168,76,0.15), 0 20px 60px rgba(0,0,0,0.5); }
+    to   { box-shadow: 0 0 0 10px rgba(201,168,76,0.3), 0 24px 80px rgba(0,0,0,0.6); }
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 8vw, 88px);
+    font-weight: 900;
+    line-height: 1;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--bill-green);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin-bottom: 16px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .hero-desc {
+    max-width: 560px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: rgba(249,245,231,0.72);
+    margin-bottom: 48px;
+  }
+
+  .btn-apply {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--green-deep);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 52px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.35), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .btn-apply::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent);
+    transform: skewX(-15deg) translateX(-120%);
+    transition: transform 0.5s;
+  }
+  .btn-apply:hover::before { transform: skewX(-15deg) translateX(200%); }
+  .btn-apply:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 44px rgba(201,168,76,0.45), inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  .btn-apply:active { transform: translateY(0); }
+
+  /* Bill ornament divider */
+  .bill-divider {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin: 72px auto 48px;
+    max-width: 800px;
+    padding: 0 24px;
+  }
+  .bill-divider::before, .bill-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .bill-divider-icon {
+    font-family: 'Space Mono', monospace;
+    color: var(--gold);
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  /* Sections */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-tag::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 32px;
+    line-height: 1.15;
+  }
+
+  /* Responsibilities grid */
+  .resp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 8px;
+  }
+  .resp-card {
+    background: linear-gradient(145deg, rgba(26,92,36,0.35), rgba(13,61,18,0.5));
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .resp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--green-light));
+  }
+  .resp-card:hover {
+    border-color: rgba(201,168,76,0.45);
+    transform: translateX(4px);
+  }
+  .resp-card .card-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+  .resp-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--gold-light);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .resp-card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(249,245,231,0.7);
+  }
+
+  /* Who should apply - styled list */
+  .apply-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .apply-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(13,61,18,0.3);
+    border: 1px solid rgba(133,187,101,0.15);
+    border-radius: 4px;
+    padding: 18px 22px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(249,245,231,0.85);
+    transition: background 0.2s;
+  }
+  .apply-list li:hover { background: rgba(26,92,36,0.35); }
+  .apply-list li .check {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--green-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 1px;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  /* Why Join - banknote-style cards */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .why-card {
+    background: linear-gradient(160deg, var(--green-mid), var(--green-dark));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 32px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+  .why-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: -20px; left: -20px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .why-card:hover { transform: translateY(-6px); }
+  .why-card .why-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .why-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+  }
+  .why-card p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(249,245,231,0.72);
+  }
+
+  /* Process timeline */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 7px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold), var(--green-light), transparent);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 36px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -27px; top: 4px;
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    border: 3px solid var(--green-deep);
+  }
+  .timeline-item h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .timeline-item p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(249,245,231,0.78);
+  }
+
+  /* CTA band */
+  .cta-band {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 80px 24px 100px;
+    overflow: hidden;
+  }
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,92,36,0.6), rgba(13,61,18,0.9));
+    border-top: 1px solid rgba(201,168,76,0.25);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .cta-band > * { position: relative; z-index: 1; }
+  .cta-band .money-symbol {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: rgba(201,168,76,0.15);
+    position: absolute;
+    font-weight: 900;
+  }
+  .cta-band .money-symbol.s1 { top: 10%; left: 5%; }
+  .cta-band .money-symbol.s2 { top: 20%; right: 8%; font-size: 120px; }
+  .cta-band .money-symbol.s3 { bottom: 10%; left: 12%; font-size: 60px; }
+
+  .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 54px);
+    margin-bottom: 16px;
+  }
+  .cta-band p {
+    max-width: 480px;
+    margin: 0 auto 40px;
+    color: rgba(249,245,231,0.72);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* Footer */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 28px 24px;
+    border-top: 1px solid rgba(201,168,76,0.12);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: rgba(249,245,231,0.35);
+    text-transform: uppercase;
+  }
+
+  /* Animations */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.8s forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.3s; }
+  .delay-3 { animation-delay: 0.45s; }
+  .delay-4 { animation-delay: 0.6s; }
+  .delay-5 { animation-delay: 0.75s; }
+
+  /* Floating coin decorations */
+  .coin {
+    position: absolute;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, var(--gold-light), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 20px;
+    color: var(--green-deep);
+    box-shadow: 0 4px 16px rgba(201,168,76,0.3);
+    animation: floatCoin 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .coin.c1 { top: 18%; left: 6%; animation-delay: 0s; }
+  .coin.c2 { top: 65%; right: 5%; animation-delay: 2s; width: 36px; height: 36px; font-size: 16px; }
+  .coin.c3 { top: 35%; right: 9%; animation-delay: 4s; width: 44px; height: 44px; font-size: 18px; }
+  @keyframes floatCoin {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+
+  @media (max-width: 600px) {
+    .resp-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .coin { display: none; }
+    .hero-bg-symbol { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">NSUPC SPONSORSHIP OFFICER RECRUITMENT 2026–27</span>
+    <span class="ticker-item">BUILD INDUSTRY PARTNERSHIPS</span>
+    <span class="ticker-item">NORTH SOUTH UNIVERSITY PHARMACEUTICAL CLUB</span>
+    <span class="ticker-item">DRIVE FUNDING · FUEL IMPACT</span>
+    <span class="ticker-item">APPLY NOW — LIMITED SEATS</span>
+    <span class="ticker-item">NSUPC SPONSORSHIP OFFICER RECRUITMENT 2026–27</span>
+    <span class="ticker-item">BUILD INDUSTRY PARTNERSHIPS</span>
+    <span class="ticker-item">NORTH SOUTH UNIVERSITY PHARMACEUTICAL CLUB</span>
+    <span class="ticker-item">DRIVE FUNDING · FUEL IMPACT</span>
+    <span class="ticker-item">APPLY NOW — LIMITED SEATS</span>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-bg-symbol left">$</div>
+  <div class="hero-bg-symbol right">৳</div>
+
+  <div class="coin c1">$</div>
+  <div class="coin c2">৳</div>
+  <div class="coin c3">$</div>
+
+  <div class="logo-wrap fade-in">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADhAOEDASIAAhEBAxEB/8QAHQAAAAcBAQEAAAAAAAAAAAAAAAIDBAUGBwgBCf/EAFwQAAAFAgMDBQkMBAcMCwAAAAABAgMEBQYHERITITEUIiMyQRUzUVJhYmNxgQgWJEJDU3KCkaGxwTRzg9ElkqKjssLwFzU2RVRVZGV0k7PSJzdERlaUw+Hi8fL/xAAbAQEAAgMBAQAAAAAAAAAAAAAAAgMBBAUGB//EADURAAIBAwAGCAUEAgMAAAAAAAACAwEEEgUREyEiQRQxMlFSYXGRFUJigfAGI6HRM+FDsfH/2gAMAwEAAhEDEQA/AOwwAABIgAAAAAFUke/JD0F1ABMAGUCgAAqkhUeaQAhkDpb2QW0gqkgAoSe7+FQkAA2kKq9IAAAElMfNj1kLaQVxv5QAHBEpCO0DlPAAEUgJ6dkHQIrgACjwFSoBToYgUSCqBAcAAAAFUoTMg1AAgAiYHYAAAwAAAAgAAQeV0wUecCAKBdKtoAEkqB0rABkqCqQkkL6QB4CqSPVBJxQATeUA2CBVIAMkKaQVI9AAAAAADdxIXbUCyEhJKhMDsJvKCW1cCLzggAKUC6gVKgAA4bUFQ0bUFAAdSgQALstiYEdm6AHIAiD3UDBrrdA1ujAFwk4782C5OjwAFAAAEwAAAAAAPQwfeaaZcdkONttoRrWta9KUpLiZn2EKG7iBWLndchYYUZFVbbPQquz1m1TG1cD0GXPfMvMLT5wgzEKtiaI4ZNntHD6MUmqYpWPGmOQY9YKtTW+MOkMrnvavAZMkrI/WM+vNNv026qfQ8Rp9z39XJTaZSqdCaSzT4bJr0E64yTiEbPPMukUtW4N7nxAua3X71kWZHsyk23Yq2UPUp5o0P1AjbQ4s0GgyS0RkvJHNVqMhXkw42NCTeV1Ti/gbCyvON/EXVJMeEn7DWtZfxAdNUxUc/wC59qQ/MeuB1Sv5McZPc9218qzUbXdmV9y4HLyp1Xt+Noc1SKc5sTcbzSWnZN9LqI9xGD1vC5qm1LF+PRLYqT5Lt5pqhLNb7ylLfZdKQ0244atRmZN7t+W7gMjZt3msnUsWWuNp2pI81FdeSf3xx4V4XpCLOr4YVXL4y6XUo8v7jNtZ/wAUVTCe271puLxTrr2Uxtu0I8SPMjQFR2kFt8+TnmpWpxGRmZ83rFuFcvO6a5CvW+bahVCrQ7prlYpjFBjNocVphpJrayGt2gk5bXWf2gZ2LeI1SFinaO1bjVSZJt6S4W5mtQ3ISvtcIkH7DFzZfakstusONONr6i0L1JV6jIc7zcZal75LphT6PGrFKlzORWtGeZIkynWpCIr6DVkeZGpWvnELBFYss7imxrQqdWsqoIrCqOy7CLVAmTEs7VaSjnm2ZJ3ko9KN5cRjiI4uvmbPI7yEBR37tuG106L+pTbtOy/v5S0LWwlPhea3ra9Za0+UXKDLizobc6nyG5kd9Gtl5lZKbUnwkZcRYrGVdWFgg8oLqcCKk+jAmMVAzYXcjfNufx/3hJKdl3wAOmQsEWQsJKAyQ4CDPfg6EWAQAHAACKUNA4IAAFgQeJUFAAipoJKSHYK4nagBoIO9bpo9pUfulWJDjbbi0tRmWEbR6U6fBtpst61n4AL3uemWdQXKvVDdPQtLTMZnnPSnV7kMtp7VGf8AbIZDPqh02pSLguyv2w3iXKhq971HqE8kx6YlW5tlJZ71rPctzdrMskmSQZvCQZvlULiDXoSDp1SxbcdbbnPITRbDp6ycckrNWSDknmROqzy3GZNp4c5QY3vf2IqLpcoFEtOa3WLKnuVR2PAkk3Cn0XQZITsjPW44aTNJEglEhaeb4CrWF71dxCqVcty97fr1y06XGRTZ0yazBbkUid13yIiNLjTBHpNBb97ZGQvd5X/bOFcWlxp8iNeOIVOpqaeufsSac0Hkrpllq0Z7j0ZmZ+TVmEcbM2KhmSFcmLVi7YFIxNoFHrq3KVRVoj6nZVZoqH32o7iM9BpdNOyUk1Z7+BiDuqgYUWPh1bd2SLUavJujRo0OBVEIaecUhKcmnHHMySacyJJHkrIzSREOZ8QMQrrvqZtLgqjjkfXzIaOjjtepv8zzPyjXfctXVCq1MqGE1zltafUGXV0/aL8O9xkvLxcLykvyDbazrGuTHNXSayvhTd3B677qG5ZH947cpVOb8eU4uQr7tBF94rb/ALoLE917mVOFH8xEBvT6t+Zip3bh1c1Bu+oUDuVOmcle6GShk9D6D3oWR8N5Zbs9ysy7AgzYl4O/4jc+u82n+uLmmsI+01KetaHMkuLmrb2qdR3Pftw1rByFflgPtIWxz6jDWyT2SS3Olv35oPf5UZn4Bm1E90xdUd7+F6HSag36BbkdX2may+4K+5tcuez7icolbpmVCrHNd6ZtSWn8siVlnwMuYrd4ngFKxnw5nWfekiPT6fNkUZ/4RDeQytxLTZ8WzMuBoPd9HSKLeW0kZlo1K/c3Jp7jZrKtfU1WjYiYOXPLoXdikHbc2jy1yqbtGtMdh9R5rVm3zMjPJfPIi1ER8RL1jDurt2hZMXDSrQ5rlLqrs9dVmuJc1qeS6S5B6dzh5uHuLwF2DmK36ZOrVdh0WA3tJkp5MdlHnGeWZ+QuKvNIx0NjLejuFdHtmxrIkNxpMVCZElehKtTZZlksj7XF6lq7d3lELuKOLsl9rfyMjNL1UGEi4a3aF7FZ1kT5NVciPJ7uz6my5JTOqD+RIZc0ZnHby3EtBaSUZJV2qO00pyCVx1FvDiqU6HcsQku1u1je1QpCzSRuE0rIiS4RmaNojdqLnpEPZd82hiTUIzlUjsWxfqIzsaBVGC3qUts0ZtqPr5azMm3M9/VzPeIWVbM7C+sOTeWSZMynPS/ebDeZJxMxxyKg5DjrqC1GZ9Jk0ak5qRzRqdo6CNHcLkpttoXPAuViQcZtyHUIq9lPgyea/GX4qi8HimXNUJ0ZNRFVi86PTrp5RS6PeKFqRR57C9EauxtBO6TaNWs28jPNJ85CkmpIvllXI1clNcd5O5T6hFXyepQHu+RXS4pPwl2pXwUkSUKzK2LE6CqT84DaQUSLQzaQoCtgwmAyVBwGoXjq+TACwA92YAiBspQCVArgIMAXBkqCKVBQALBGQ81GZdkyHG220IUpa181KUlvMzPwAahlmOE92uTqdhpDdNsqohUutLR1m6cg8jRn2G65kj6JLEW4SDcJVpVwOXHMkYmzGozkSKy6izaVNmIiJf3b5Jqc3E45wT4EZeMM4gpk4lzb7jWpT7bnFcyGUT+6z2zn0JaWyaPmkR7ZsjLNC0HlqGr4mYb2zf8AR48GoN8nkQf0CSwgtUXhu0nuNG4s0GXYXDiKXd1TjYOYetQafDoDd5VVnZLk0umoipUlJn05pLtIlbi4azPSWkjISjjzbFTDOsMeTD3E7FqDhvMj2/a8OFUay3sO7ExaCTtUtIQnQpRbzdNCSLM89BedwjPdE2dFvGkUrFC0Nm5HnMton/F5p7m3FeUu9q9SPAMaoVtuynuW1dxw9a9ejXzlKPfmox0JgFXYOykWLVG2+505CuTI+LqMuejyZlv9efxjHZ6G0KbReR5N9Nx3M7W2XX1d1K8jDqVZ8Ro/hz7kjzUc1P28T+4WqkNNUp5uTTENxJDC0rZeQjnJUXA8xMXhQJFsXJJpEnvaOeyv5xo+qr+3xiMQ6lE0e1cc2ZDtwrG6ZUPBXlxeUmqjtXWp0NPkRb4sWNc0Nv4bFRpkso8nWT7OsXkPzhTBXMGsRKTbd1NU6ZUo5QKgtLC+dqSlfBCt24t55H5D80W/E9EKzq4Tbu0bhytTsbQjUnz0+zMvYZD5N+rdDVin2sXVU+k6OumvbVZWXi6q/wB/cZjQ4iju6zDjumXdOF1TP4yuw/aW71jHk3dQ/wDKHG/2J/kLRh7c8VF0w2qfMbkOPr2S2eqp1J+Q/Bx9g87o93jk2b04G3VOjA2Lai04d0eG29IuadHbI4SFIZcW2WtCtPSGR8eG72mMjxHspq7LjmV9uoOx6jKXqWh/pG9JFkSS7SyIiIdGXMqiHD7nT57UNC1bRaEuElSudnw8p7xW0Fh3HLruPn+2V/7DuypLAqRRS0pj316/sWzW6suzOP7gtysW+9/CEPZt6+Y8jnNq9Suz25GNiwnxFod6U2Phzii1GqyH1JRAlyV85a+CEKWR5kvsSst58Fc7ra65W7HbYcaboHKG3OulcZCkq8h6zEdVL57iU1x22LMhuON/I7dMfm+TS2rf5Bv2+kYl4ZHpr8jXht+jtkrlTuS0J9EqRUmjom1S9aiypqiyYrJxoVu09C8iNJnqJG7IlcVrzNPbzpk5dY6W7G48f35W4hEW6qdCXqbnRstRKT2bTT0iO0t6D8Af4XYpT8QqdWaSwxDod0xWVqjsv6nWvFJZlzTPQrIlF5SEjYeGU61KudVcv6tTHZUlcuoxzZYbjzH3E5Goy0ay7MiJe7Ih16Vy3nTyWZMlLjS6hFq9Nj1KnyG5EKUyl1l5HxkmWZGHOkUa12/effUyzt7dLqu0qVE8VpWfwiOXkI1E4ReBavALyLFbII2QVIMCqBVK/qgTFAuykNkqDxPAAG1AD0AANXAQLqQElJABQdKgQATAdTjXfXHNmMHs2qtTvfFiZUHNm3WHnHWV/NU9gjSwResiNz6TgvePVUk03Custw3NnMqKG6VGWjrbWSsmSMvKRKM/YM9uyK01QaFZsNvZx50lqFo/0ZotTn3NkXtFEjFE1cd5OYftOwbbkVuqdHNqS1VCZr+SSZcxHqQ2SS+0UzFqhU26KZT8SKW2644iMlp7X1koz3GZdi0LMyP1+QT2MVY7m2e5Gb75OWmP9Tiv7iy9orGCFwtNTXbWqnSQqjq2KF9XaGWRp9Sy/lesdKzhaNNqvL8qef0ldpn0BudOvz5fnmZ80ZlwCndRUCY262twpja0rZSyjUvUW8jIi4esTV7UB227lk0xz9H68ZfjNHw9pcPYIZlOzPmN7MehVtquSnzx06NNVZKb6Gy3m1NxUwdj3FR2yh3FTczeZXkozy74jdnxLJxH2fGMc+nac+aray6wbmfmGv8AExrmDN1+9e6W0SHC7nztLMnxUn8Vfsz+wzDzGS1Tty6eUxG8qfUTU6z4qFfHR9p5l5D8g04E2M2wbq5Hdvb17i06ZBqyXc272qYz7yk5Zd0jz/2f/wCQ6PtNv+6VhJ72KpLbkXDSG07GSvrKURGTaz9ZcxftPwDH1dbMTliXDJti6Y9Wb2mzRzZCPnGj4l+ZeUiFmktGx3Fuymnof9QTQ3C0lrwV6/zyIida9cgvONuQ9po5i9C9StRdmXEaV7nugtQlVS+K43yePTkOJa2yNOg9Obi9/gTu9qhcr6ovdCXDrNHMpEeqEhPMPm61FzF+oy/Dyg+JHJadbEO0UFtG3EpVI85JHnv9at/sHyVEezmkaVeFP5ryPpca0pxmCXBdNTrN0TKyUh2O5Ke1IQhfVRwQny5FkQk6TeMproqg3ylvx0c1X2cD+4CrWg13ylubP0K+r7D/AHitKiympnJnI7nKPE0alfdxGhmtzXJinexqlLqEWpM7WG5tPHR8ZPrIPUjQsG7Ubtuz45yIyEVGWjbyFaOcnPgj2Flu8OYkrztiPVYy5ERptE9BZpPq7TyH+8bkmgJFi2itxdxf0VscjFKhSnIdxw7soHR1mCvXo6qZiOC2nPWWZZ/2La7mhldllcopazbkrQiZAWfNU2+nnN5l2b9xl5TFVYsatOFm4cJv6byvyIXq0qdIpVJ5FKfbd0rUaNnnzUnvy+3MdPQ3Sk/amXcIYtSsrdVSm3u65cOGdPvGlx/4VpBoqsZBdbU135n6yNqjIXWlyWqnTo9ThubSPKZQ+yvxkLLMj+wxBWY2VOuO5bdc71tk1COg/m3yPWReTaIc+0M8HFcioNRtdzr0CqvwEfqM9qx/NuIL2D0FCcTVbVWv5WhbHmw2kL6YSQi5zeze/WCZtCjLoktQgkqEtHd2rO1AC+oAJgAB24kIONhyEVAYYaqTswUO1JDZSRJTJlGPj/Ka9YlE+frDtQWjzYzCzL+cdbFZUrlOJ0Jv5ODSnXf2jrhJL7m1CYxi6TGC0WvmKPUnUfSW5GT+QgqCra4hV135uHDa/wCKr8xQ3aKJF4l9SqY6TtrXqdB+Yja/rOHl+CCFEjrdacbdbc2bjfOQv4yVF2kLPjE3JbvZx1xvo3GW9ivxkkWR/fmKo2fNyHqrTVsVPmummZr528zcZ6GsTMN26nHb/h6m6taEdZSiLnp9SyyNPnbvGGQt7zyIXPBmZXKTcjbsel1KRTpWlqTsIy1JSnPcvcXYf8kzE/iPhxWCuRydQ4bbkOX0q+mQ2lhfaXPMt3b7RC3kWCRombdyLb20fSFstwi8dN1fPuqZog8943Kx5DWIuGki1J7uVUpyC5O6vrbtza/6p+Q/KM1XZsmJuqNftin/AO01ZlH5iWso6bbFyQ6s3iNYZaF9MlFbSraoPrp3F/Y8hbeSQyJwtxL1Gvoq2u7efGSOuDbq+n+inyYzsaW7GkN7OSwtSFoX1kqLcZAhbzyGl4oSMOrhrxVemYhW5HdWjTJQt7VqUXBRaSPfluP1EKgcKzDP/rMt4v8Aeq/qi2HSEbR0q3aNK6/T11HMyx01ryrrp/ZruAdWkRbHqLtWcJul09alNSXD6qdOpwvUXH2mEKziVhE7MXOfOTUJC+zkzvZu4LyIV+7bnsSbhrFsu3cQqDDaIk8qde19Mkt6uBdq95/YM097Ft/J4n2af05S2/6o8fpFGuJmZU3eh7VZr20gigipRtVN9a9/vyNWXjPYkZPwCzpLivCtllv78zMWzCrEObetSfZiWy3T6ZFR0kjlOrnnwQSSQRZ9vH8Rh9vYc++Co8ioF7WfU5Jo1bGNUjcc0FlmrTpzyLMh09ZFtQLStuNRYCejZ66zLnOLPis/Kf7iGrDE6txLqNrRj6Rnmym4Up5U3lgMzyz3EOccecdeQPSLXsiUg5ratEypJ5yWlEe9trsNXYa+BcC53V0jGqXdJW53KtamTX35pKRIkx1kSmG+0i356jz4lw3+QccXHZ9w0B34XRKrHjfEW9DcSn1ZmWQvkfkbmkL1lrso/ctNIxGumolyWp3PVVuL6i+WLTq8hkRkNW9z7VpLeIHJpMhxzl0RaOes1K1JyUXHyEsczNufNjYfc/VflGItDN1z4Q3IUn6aVNrTn9416LxKx59dotyktW50Olqt8DxUoUnLmVCnSYq/pNm24j7toI+gJ5FjJdMI+91GnQqh9dJuMqP7ENiQvo9lclmyP9bLa/jR3f3COqZbLHmmf6RbMpK/qSWDL+kY2l7R6pe23r/3ShdHFBjUO8/XDkMJzu1e/Vi03BsHMN/Zfq/7bw2AAExtGvnG/wCOAIcAAWUFUoGBFcAB5tA2mOubHo/if0QuEsgBh+LDjv8AdgtVxxzvlEqCPsejH+YhqCrZYhV3z40Nf/EL8hO46NcmuqxKt4k+VT1/t2DUX3sJFb1cmxIjufJzqUpr9o04SvwcUKWKJOtfUfXtSot0UeTCj/3xpq0rR428iPIvIZfyi8gkpFr9yLbkNWPDpMes6E7GTUEG568z3nnlnl2aviioXRWXbXxCp1Wc/QpUbZSfYs+d7M0n/wDY1OC7tNm6259D943meRY18JpQRW887sy8dN39VOcbupuPbu07qOXHIb/1e90avqsn+QzmsU6uNdLXKfVm/PmsuJ+9ZDuyK4JeG6LI7zH5Sb6Lz+ap8621tejCyVD6NJhwZP6RDjSPpskr8QRyzrPkl09qUFz6dOaV+Qu+I/SazaGbxHzpAH0Ik2FhqR7ORadrtr8+Awn8gj/c9wr/APCtqf8Ak2f3CXxFfCU/BpPEfP0HYS0482244022taeevPSnynlv+wfQRvDTDVZZt2Tbbn0YDKvyDlvDfD5vvdk24XqprP8Ayh8RXwimhpPEYxg7fGB2HNBONDuRyRUHyJU+c5TZBLdUXYRbPmoLsT+Ji1VT3SmGcZrOPIqtRPxWIek1f7w0DSY9m2hGL4PalCb+hT2k/wBUSkanQYxfB4UZj9WylP4DQaSNmyxr7nVSGZVxVqe3+zgSdKu+7bkmXJHh1qRMnPKdWuEy8rR4EkaC4EREReoaNZNK90QTrZ0hy447eX+M5JaE/Uf1fgOwMvIBkLWu8lxxNdNGYtlV6mZqw3pFx2jHLEaj0Z2uaFKkz6Yk2FIPM8jJwslHuyz+KZ57shSsOImAUK9aXHtWRImV1xauRq2stacyQZme/JvgR8Rp2NdZKgYV3DUTWSHChraZP0jnRo/lKIcze5KpXLsXo8jZ9HTob8j6JmWyL/iH9g0G7RKfFZkjVaHTN+ETlxWZH/1up3+LFe/eIu4Xf+nOj+gtyYv+NIjl+QlK1lNxUt6L/kMCVMWXnKNtpH/qCEJXLsaq678nTqRDhfXcW46ZfZswXtFtO23rT+KULW5JddCOkLNthVLQtNwaaQNIcqaCTjYARACmkAAWEJqCgTUAChJQOoESAMv90VTJUnDGq1KO30lGearDPjfBnCcX/NkoZpd0lpuHRrkjudHBmIdWv0DpbNZ/Yoj9g6SlNNSWXI0hvaNvoUhaPGSe4yHNNs0zk1NrNgVTpHKG85TV+MqMZao6/a0pP1iMVspVIuW4GL0HlNttzm++QXtf7NW4/v0/YHOCdy8upvcSY58Iio6Hz2vB7PwMgpZ7/dK23KRVOkkRNVPmedkWRK9qDI/aMwZXOs28PSQXvqutn+RoMdK1xuIWT2OBeu1pcpdL2W3V/PzqOoorolYboqFBqcWpU2POhubSO+jWj9x+XsE/FdHP6j0qOrrkpaIbok2XBW4b4lo74EjmT3e9lUkmaPfaEOOVF6SilyNeSm9kTbriTyy3KzLL2im+5qwDtHFSyapW6vUatT5sSqqhIKEbGz0ky0sjMlNmeebh9vYNl9281ynBNtz/ACSsRl/aTjf9Yhz7gxitfOGdh1hy27bhTaMupJVJnymXHG2JKm20kg9CyyzJKePafEDJF4j25c2BeKS6Vb9zyWnUMtzYcuFm1qaUaiInG8zSe9syMjzI8i8ORd44SXM7eWGdvXO+w3HkVGE2682jqpXwXl5MyPIcV2LZ9y+6BvGqXTct10mG0wae6Tu0JLzDBFuJpnglvLMiWs8s9RnrVmO0MJ59oTbEpbVh1CPNoUJlMOMtlerQTZZaVZ79Xr8IGC4AAAAADwDsEVclZg0CjyatUXCbjxUa1+HyEXhMz3F6wIsyquTGN+6prqHIsS0kLyJfwqR5qd6W/wCVmf1SDb3GdtOQbbrFySUZLnSeSs/q2c9Rl+0UsvqCVj4m2dXbjjt06ynZlVnPJaQ9JjsJUo+GZrI1HkRF9hDSL2rDdt2s/JhsIOTzY8FlORbR9Z6W0kXrP7CMULxNVsjiQUjkne6zypT+COs5RVO8bnr57mUPIpcdXmsEZuGX7Ray+oIHCxfdbu7dH+fKw+6z+oayYaP7Gs/aF7u5TZmDzVGpbu0rM5KKbDX8ZyZIVkbvsNS3PYLDQaRGoFBp1Jh/o0GM3HR9FJEWYsodCJa7tfr96kkykLpSCtgwtNoKpIK2xtXgoF22+hABQApswAB6rgCAKUE1KAAUoEVxBgi4oAAYzj1Su4FyU7EOO38DcQmlV7xUtGvNiQf0HDNBn4rnkGzBpVqfBq9NkU2oR25EKWypp5lfVW2osjI/YIsQYxttLTfyfX64qWJ9ud1qb3Sht/DYiOehHWdRxy9ZcftEjTIs60687YFbccccjo2tHmL/AO3Q+Bb+1xvqLL1K7RQMSMTK5SK9yamQ+58OCpeuTUIjiU1N1vLOKyeW7Mj3L7ezdxlDI0bZKV3FvHdQ1jYmMFbl5FUu4khz4NL58bzXfB7fxLyjcIrowO6qI1NJy47Xc6RhaeXw2FkpyG7kSjLdwMs95fF/DR7NurutavdJtvlEhjmSWUdZSi46fWW8i+qNy5VZP3UOVoySS1ytZ+XV50NIiviWivil23XKZV4fLqXMbkN+Z1k+Qy4kYsUV0aLLid1WVlyUz73YD8UsB6q24+025ymGplC1pSp1RSGsySXaeWZ+ojFE9xAmj1eyb2teqcmktzpKNtDWsulaWzpM8vBzePYNjxAsW2cQ6bChXRHckR4j3KGdjJWypKjLLik/AYotcw3oOEtuVm8cMbbq0y5W4bjEZHKXH9klwy1uaDPnaMtWRbzyAkco4gUmTYl+3Na9OqjrjcRbtPW8wvv7CslaHMuO7SSy4ZkY+gOBjFmwsNqVGsWS1Io6GSXtW1lrW4e9ansuDpn1iPhw7Bk2Hfub7UdsmG3fkeRUbhkLVKmSUTHG1Icc+T1EfOy7TPivMxruF9hWzh5R5FNteHJjx5cnlD23kreUpeRJ4r8iSAF7bUDhq2oRl1XPRLYpx1CtVBmG1wTr6zivAlPFR+oCMkixrkxKzJDMVhyRIcbbabSalLWrSlKS4mZjlvGbEM7wqxQYDjjdDiL6Hflt18NoZeDxS/5tzTFXFOp3o7yGOblPoyF/o2vnv+A3DL+hw+kJTC2wW3Ka5fN3x3W7epzKpSGditxyUlJatWgizNvdwy5/0etpSSNM2KHkb6+l0lJ0a17POv5yLx7nOxHKfE99lUb0SJKNMFtZd7aPiv1r/D1jZHmWXUkTiEL0KJfO8YuBjku8MWsQYGIDdfpUxtyjy0Oe9yI2g36ZVo5klLbbZtltFTFOHzkq0bPTlw6264i3PU0RYFp0MuT3ZXGd2R600xrLpZKzLsRvJPjL0jZVVjXE9Fa2sdnBs1/9qM4TpXpinIqpFro1q7SFDV8V+oLLJ9ZeEm05N/SUsXnSGNq0GDbdBhUSlt7OPEZ0I19ZXhUo+1ZnmZn4TEoniLFUujXxBm0hVKAm2HQkWhUp2Y8TwAVwHrYAMAAAAGrgI4rZd8BXnXQ0cbAAelO/J97/ALcQs25tQ0UkGht9MAHzaQulIIC7QAVfFOyY19UDkSpDlPqsRzlFLqKEanIb5cFeVJ8FI+MR+oYVOXXalDqNnTJDdu3dE08p5m0Tss8uURs+KFlnkfxFblc4h0yp8U3EyzaPe0OOciQ5TqrBWpdNqsXv0Vw/6bZ/GQe5X3iOJD6lOXLLnTrFekR6pWO5Vo06c+iHt4ZJn1h1XEjTxWSFGfPSRGeRfV0TDmTR601HvG20SKfHqOtL0N5CU7XQs06iIjMiMjLs3Hv8OYgrvoEabUu4mIFLjUq5tjyelV5nNLL6i3oUy6RkaVke/YmZHx05pMUG5rNu6DNt6ktx2ibispo9EdROWxspZt7Vc3Nvhmolo0q45CSsGjjkxZuRuFFtVqk3tNr7bmzhOMqXsULPvh568yLiRcfb5A0t3Eq5pNScbkWPVpEJbyti8wytLmjPdmS9xnl5SFNtzG+mRpldauiQ23CppNppslDJ7ao5a23VEnPI83GzMjLIkkfO4DTplZdnMUpFHrcKlTKjG5RGjVBnU66jSRnknWRllmWe48hGarycWs1WtNiv7Tat+v19y70Wo8tZ2vI5sLzJSCSr7jMS7LowmtRsbWv0eoRpDf8AoWxb/pkRiqVCJi+5+mN3Q59Ba9P82eQ12mx+U1ZNKtH/AMTex1Yl3ZdK50f0w0lXZbMH9MuCkx/pzG0q+zMcl+8u+ak90lv1uS5477J/isTtFwdvmd3ynxqc348qSj8G8zFfSJPlU1fjN23+OGv59joWVixh7C75ckZz9Shx7+gRiorvDC2vV4iiWtU7pqi+r8DU+rT+2VuR9xCuN4RWpaVH98GIF2bOnMLTr0dCzqM8iI1HmZ5mfZkNLsurWtRb1fsGjUdulr7mNVSJJRkpuotGelakq3mo0Hpz1Hnv8G8TWkknaNmKl/cf5Voq+muv9Dyr1/D+xadDk3Gig2suWfQxn9i2tRl2c3dzcyzMs0l4RnN2YgxriolPr1LuRyy71oFYKmroVQeWpmS+6pKeTOtNke0bcJJGh5CdxZq3bxZb5tm8CxSj4hWdT7duFt6idylx6nJNnk2TpuIeacShZGg9XOLjuLf4IJk6Zblap7SYUO+cXo8Hk8upGelEPUtStTznBtCdZkku+KQRF2i/snWpRIl3CtstScMaRUVVqkU6TcNxVtc2hWvS3Nq3HdNskns1qItJdZa3MkpTqMXrD62JNIKZVq/LbqFy1XSupTG+qnLqMNEfBpHAi+NvUriGVj22zSZkiv1ieVZuWcjTMqS0adCOxplHybReDt6yhclL+VElXvIKrM2TC4AQSsKpULS0XjpDgIx+8hYQAAkFQVSQAP2gATAACAKpIMAJgQcQDx29myDKCihADdTgavSR7KcEHUpIGReVUNkIeVV/SCEqlSFWqVXAwWa4n6ZW6a5TaxDjTYT/AF2X0ak+v1+UZ09Drlr/AOD8zu7Rv81VB74Q0nwNPnxLyOfaPJ1c9IIeRXvSCLKYxEpFPw4uhqnUjk8a2prC2ELgTYxMuOxm3DcOMgz3aFrM8zbM9XnBJuxL9jYqUa9qg5TqrIcnq23JluJTAYNtxtCCJZ5G0WojPSWrMz9YZVaoxZrPJpkduQ34j6CUn7xDU2oTqT/g/XKtSm/mUPbRn/duZkI8Q4idsyW7CjlNqlUv2Fe0SPNkVvlSH1RF6UOHpXn0SW+Gg0eAvIGVl4gXgWHFVr53fNkSYKKct5Tk6JLSlDshBOuG2hvW1kkjIyc1dfjmQkIeKN8weickUWqt+nhrZUr2try+4Po+L05rabSx6A5t0aHthMNKXU+A82t5bz4hkNp9I+vS8Lmq1HxKr9p3vJap1uvMLpq6ehh2O6k47ZuI2mg8yJZme4+0L3om826nXbSo9cuOucrtmnVBCTk6X32ky1IkpaMskIcW2eXNIlKyIMIuMk6ND5FT7DoEeP8AM8s6Pfx5hNZAsjGe+ZPRx+4FKb8yM5IUn1GtZF9wZDafSScm0nLotCq23YGHdboVKfqtOkGq4XnUtuqbWZu5RHl5k2REWtRHm4o8uzMvZFnWFaVOhUC97+kXUdKdUqlUukMrbmtNut5PxVG04tZMLPI0oM0ZZZajIzIUupXNcNb6K4Lsq1Rb+Oyh4orKvWlkkZj2kzoNNZ2VPjxo7fmIJP2+EOIjlI3kaoq47hq9JjUGkIbsG1mEbJmJT3CVNWgvi7UuayX0M1ecJy1VUe36byKjw24Ufrr0dZSu1SjPes/Ke8ZPHr3pBLwa56QSVQsZs8Or+kEzDqQyCl1cW2k1DaCRM0CPJD9lwVWHJE/DWAJmKroQ4DKG4HQAOCA4AASABgAA3S2ChdKgk4oTAVXEBzvIAK2oARtQFWqyhbpjYrdSjCAKFXBSattRpFUgirVKlejAyZ1UNqISVtRf5lGEVIofowBQ5CnQxTtReJlDd+bDDuH0wiSKopToJ0guCqC782C9wXPmxIiVHpAdKnRa+4LnzYMmg+jAFYb2odM7UWNug+jDpmg+jAEDF2omaftRJR6D6MS0Gi+jAAo+1F3oYiqbSPRi20engCbpvyYs0EQsGMJ+GgDA9ZEgyoMo7YdttABYAeJHoAAA90gABipI8CykAZNCYEQk4HakBpI6MAEcVtf1gj5TAO8oF5V843tBAENMp4ipVI9GLdtYzv8A+Ag5yX+yABRnqH6MN3rfab+TGgssbTpW2wVVPAGZPW/6MNnLaad+TGp9yvRgvcgAZY5bnowT3uejGqdygl3K9GAMw97nox6m3PRjTu5XowbuY182JYgzVu3vRhdu3vRjRe5nowdNODEFAZoHow9j0P0Yu6aeFm4IiCqw6QJqHT9kJduGCyPmm/rgBCKwJaKx84G0FG0eEmlIAUSDagUAABSgNQLqASoAGAAAEwGcBQABGgAGlQAAEgRbwbOAACACqASAAM1A/g95+uHAAAyA4KAAIhRNzvLgI33lv6CQAAMVPAdIAAmZUAMniAABioYHSAAMGQ7YjEgACIJCm/KfV/MPEgAAYqGUCqAAAyeD1sAAAKAAAAZP/9k=" alt="NSUPC Logo">
+  </div>
+
+  <p class="eyebrow fade-in delay-1">North South University Pharmaceutical Club</p>
+
+  <h1 class="fade-in delay-2">We're Recruiting<br><em>Sponsorship Officers</em></h1>
+
+  <p class="hero-sub fade-in delay-3">2026 – 27  ·  Sponsorship Wing</p>
+
+  <p class="hero-desc fade-in delay-4">
+    Join the team that fuels NSUPC's mission — sourcing partnerships, securing funding,
+    and building bridges with the pharmaceutical industry. This is where ambition meets impact.
+  </p>
+
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScpGJqS_pZD_ctMr5o7MqECAJBwSNaFVC9__A14aVgg-ZhcmA/viewform?usp=publish-editor"
+     class="btn-apply fade-in delay-5" target="_blank" rel="noopener">
+    ✦ &nbsp; Apply Now &nbsp; ✦
+  </a>
+</div>
+
+<!-- Divider -->
+<div class="bill-divider">
+  <span class="bill-divider-icon">◆ &nbsp; THE ROLE &nbsp; ◆</span>
+</div>
+
+<!-- Responsibilities -->
+<section>
+  <p class="section-tag">What You'll Do</p>
+  <h2>Responsibilities</h2>
+
+  <div class="resp-grid">
+    <div class="resp-card">
+      <div class="card-icon">🤝</div>
+      <h3>Identify & Approach Sponsors</h3>
+      <p>Research potential sponsors and initiate professional outreach to pharmaceutical companies, healthcare brands, and relevant organisations.</p>
+    </div>
+    <div class="resp-card">
+      <div class="card-icon">📋</div>
+      <h3>Prepare Proposals</h3>
+      <p>Draft compelling sponsorship proposals and pitch decks tailored to each prospect, clearly communicating the value of partnering with NSUPC.</p>
+    </div>
+    <div class="resp-card">
+      <div class="card-icon">💬</div>
+      <h3>Maintain Sponsor Relations</h3>
+      <p>Build and nurture ongoing relationships with existing and potential sponsors, ensuring professional and timely communication.</p>
+    </div>
+    <div class="resp-card">
+      <div class="card-icon">📊</div>
+      <h3>Report Updates</h3>
+      <p>Regularly report progress, outreach status, and sponsorship updates to Sponsorship Sub-EBs and the Sponsorship Head.</p>
+    </div>
+    <div class="resp-card">
+      <div class="card-icon">⚙️</div>
+      <h3>Support Club Events</h3>
+      <p>Coordinate with the broader NSUPC team to align sponsorship efforts with upcoming events, ensuring financial goals are met.</p>
+    </div>
+    <div class="resp-card">
+      <div class="card-icon">📁</div>
+      <h3>Maintain Documentation</h3>
+      <p>Keep organised records of all sponsorship communications, agreements, and financial contributions for club reference.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Who Should Apply -->
+<div class="bill-divider">
+  <span class="bill-divider-icon">◆ &nbsp; ELIGIBILITY &nbsp; ◆</span>
+</div>
+
+<section>
+  <p class="section-tag">Are You the One?</p>
+  <h2>Who Should Apply?</h2>
+
+  <ul class="apply-list">
+    <li>
+      <span class="check">✓</span>
+      Currently enrolled at North South University, Pharmacy major.
+    </li>
+    <li>
+      <span class="check">✓</span>
+      Strong communication and interpersonal skills — you can pitch, persuade, and follow through.
+    </li>
+    <li>
+      <span class="check">✓</span>
+      Passionate about the pharmaceutical industry and want to make a real impact within NSUPC.
+    </li>
+    <li>
+      <span class="check">✓</span>
+      Self-motivated, responsible, and comfortable working independently as well as in a team.
+    </li>
+    <li>
+      <span class="check">✓</span>
+      Able to handle professional correspondence and maintain sponsor relationships with maturity.
+    </li>
+  </ul>
+</section>
+
+<!-- Why Join -->
+<div class="bill-divider">
+  <span class="bill-divider-icon">◆ &nbsp; BENEFITS &nbsp; ◆</span>
+</div>
+
+<section>
+  <p class="section-tag">Why Join the Sponsorship Wing?</p>
+  <h2>What You'll Gain</h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="why-icon">🏭</span>
+      <h3>Industry Exposure</h3>
+      <p>Interact directly with pharmaceutical companies and healthcare organisations while still in university.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">💼</span>
+      <h3>Real-World Skills</h3>
+      <p>Sharpen negotiation, proposal writing, and relationship management — skills employers genuinely value.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🌐</span>
+      <h3>Professional Network</h3>
+      <p>Build connections within NSUPC's ecosystem and beyond, opening doors for your future career.</p>
+    </div>
+    <div class="why-card">
+      <span class="why-icon">🚀</span>
+      <h3>Leadership Pathway</h3>
+      <p>Demonstrate your potential and take the first step toward a leadership role in NSUPC's Executive Body.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<div class="bill-divider">
+  <span class="bill-divider-icon">◆ &nbsp; PROCESS &nbsp; ◆</span>
+</div>
+
+<section>
+  <p class="section-tag">How to Join</p>
+  <h2>Selection Process</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Step 01 — Apply</h3>
+      <p>Submit your application through the Google Form. Make sure to fill out all fields carefully and honestly.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Step 02 — Shortlisting</h3>
+      <p>Applications will be reviewed by the Sponsorship Head. Shortlisted candidates will be contacted directly.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Step 03 — Interview</h3>
+      <p>Selected applicants will attend an interview with the Sponsorship Head and Sub-EBs to assess fit and potential.</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Step 04 — Selection</h3>
+      <p>Successful candidates will be officially welcomed into the NSUPC Sponsorship Wing for the 2026–27 session.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Band -->
+<div class="cta-band">
+  <span class="money-symbol s1">$</span>
+  <span class="money-symbol s2">৳</span>
+  <span class="money-symbol s3">$</span>
+
+  <p class="section-tag" style="justify-content:center; text-align:center;">Limited Seats Available</p>
+  <h2>Ready to Make an Impact?</h2>
+  <p>
+    The NSUPC Sponsorship Wing is looking for driven individuals who want to shape the financial backbone of our club's activities. Your effort directly powers every event, initiative, and milestone we achieve.
+  </p>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScpGJqS_pZD_ctMr5o7MqECAJBwSNaFVC9__A14aVgg-ZhcmA/viewform?usp=publish-editor"
+     class="btn-apply" target="_blank" rel="noopener">
+    ✦ &nbsp; Apply Now &nbsp; ✦
+  </a>
+</div>
+
+<!-- Footer -->
+<footer>
+  © 2026 North South University Pharmaceutical Club &nbsp;·&nbsp; Sponsorship Wing &nbsp;·&nbsp; NSUPC
+</footer>
+
+</body>
+</html>
